@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button} from 'react-native';
 
 // import { connect } from 'react-redux';
 
@@ -20,10 +20,17 @@ export default class Header extends Component {
   // };
   //
 
+  handleFinderScreen() {
+    console.log('do finder screen');
+  }
+
   render() {
     console.log('render header');
     return (
-      <Text style={styles.headerText}>StarHop Trainer {version}</Text>
+      <View style={styles.container}>
+        <Text style={styles.headerText}>StarHop Trainer {version}</Text>
+        <Button onPress={this.handleFinderScreen} title="Finder" />
+      </View>
     );
   }
 }
@@ -31,5 +38,11 @@ export default class Header extends Component {
 const styles = StyleSheet.create({
   headerText: {
     color: 'red',
+    alignSelf: 'center',
+    paddingRight: 10,
+  },
+
+  container: {
+    flexDirection: 'row',
   }
 });

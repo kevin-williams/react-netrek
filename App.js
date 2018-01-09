@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Header from './src/containers/Header';
+import HopSelection from "./src/containers/hop/HopSelection";
 
 export default class App extends React.Component {
   render() {

@@ -14,7 +14,7 @@ export default class HopSelection extends Component {
     return (
       <View style={styles.container}>
         <Text>Select a hop</Text>
-        <FlatList data={hops} renderItem={(item) => <Text>item.key</Text>}/>
+        <FlatList data={hops} renderItem={({item}) => <Text>{item.key}</Text>}/>
       </View>
     );
   }

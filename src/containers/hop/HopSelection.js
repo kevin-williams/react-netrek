@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, FlatList} from 'react-native';
 
-const hops = [{key: 'M22'}, {key: 'M57'}]
+const hops = [{key: 'M22', description: 'Test 1'}, {key: 'M57', description: 'Test 2'}]
 
 export default class HopSelection extends Component {
 
@@ -14,7 +14,7 @@ export default class HopSelection extends Component {
     return (
       <View style={styles.container}>
         <Text>Select a hop</Text>
-        <FlatList data={hops} renderItem={({item}) => <Text>{item.key}</Text>}/>
+        <FlatList data={hops} renderItem={({item}) => (<View><Text>{item.key}</Text><Text style={{color: 'lightgrey'}}> {item.description}</Text></View>)} />
       </View>
     );
   }

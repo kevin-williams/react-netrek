@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, FlatList} from 'react-native';
+import { StyleSheet, Text, View, FlatList } from 'react-native';
 
-const hops = [{key: 'M22'}, {key: 'M57'}]
+const hops = [{ key: 'M22' }, { key: 'M57' }];
 
 export default class HopSelection extends Component {
-
   handleTargetSelection(e) {
     console.log('Selected target=', e);
   }
@@ -14,7 +13,10 @@ export default class HopSelection extends Component {
     return (
       <View style={styles.container}>
         <Text>Select a hop</Text>
-        <FlatList data={hops} renderItem={(item) => <Text>item.key</Text>}/>
+        <FlatList
+          data={hops}
+          renderItem={({ item }) => <Text>{item.key}</Text>}
+        />
       </View>
     );
   }
@@ -22,6 +24,6 @@ export default class HopSelection extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'column',
+    flexDirection: 'column'
   }
 });

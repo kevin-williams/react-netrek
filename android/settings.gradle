@@ -1,0 +1,3 @@
+rootProject.name = 'starhop_mobile'
+
+include ':app'

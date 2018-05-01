@@ -27,8 +27,8 @@ export function* getStars(action) {
         stars: stars,
         starStatus: {
           serviceFailure: false,
-          message: `${stars.length} stars found`,
-        },
+          message: `${stars.length} stars found`
+        }
       });
     } else {
       yield put({
@@ -36,15 +36,15 @@ export function* getStars(action) {
         stars: [],
         starStatus: {
           serviceFailure: false,
-          message: 'No stars found',
-        },
+          message: 'No stars found'
+        }
       });
     }
   } catch (error) {
     yield put({
       type: c.GET_STARS_FAILURE,
       stars: [],
-      status: parseServiceErrorStatus('Error loading stars', error),
+      status: parseServiceErrorStatus('Error loading stars', error)
     });
   }
 }
@@ -65,18 +65,18 @@ export function* getDSOs(action) {
     if (dsos && dsos.length > 0) {
       yield put({
         type: c.GET_DEEP_SPACE_SUCCESS,
-        dsos: dsos,
+        dsos: dsos
       });
     } else {
       yield put({
         type: c.GET_DEEP_SPACE_FAILURE,
-        dsos: [],
+        dsos: []
       });
     }
   } catch (error) {
     yield put({
       type: c.GET_DEEP_SPACE_FAILURE,
-      dsos: [],
+      dsos: []
     });
   }
 }

@@ -1,5 +1,4 @@
 import * as c from './starHopConstants';
-import { DEFAULT_SERVICE_STATUS, getUrlParam } from '../../utils';
 
 const DEFAULT_FINDER_VIEW = {
   fov: 7,
@@ -29,7 +28,6 @@ export const defaultState = {
     ra: -1,
     dec: -1
   },
-  starStatus: DEFAULT_SERVICE_STATUS,
   selectedHop: {
     id: '',
     description: 'Please select an object to practicing hopping to',

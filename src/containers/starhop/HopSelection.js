@@ -9,8 +9,6 @@ import {
 
 import { HOPS } from '../../utils/hops';
 
-const hops = [{ key: 'M22' }, { key: 'M57' }];
-
 export default class HopSelection extends Component {
   handleTargetSelection = e => {
     console.log('Selected target=', e);
@@ -45,7 +43,7 @@ export default class HopSelection extends Component {
   );
 
   render() {
-    // console.log('render hop', HOPS);
+    console.log('render hop', HOPS);
     return (
       <FlatList
         data={HOPS}

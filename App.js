@@ -8,10 +8,6 @@ import ReduxThunk from 'redux-thunk';
 import reducers from './src/reducers';
 import MainPage from './src/containers/MainPage';
 
-// const reducers = (state, action) => {
-//   status: 'good';
-// };
-
 export default class App extends Component {
   componentWillMount() {
     console.log('Mounting app');
@@ -19,6 +15,7 @@ export default class App extends Component {
 
   render() {
     console.log('App rendering');
+
     return (
       <Provider store={createStore(reducers, {}, applyMiddleware(ReduxThunk))}>
         <NativeRouter>

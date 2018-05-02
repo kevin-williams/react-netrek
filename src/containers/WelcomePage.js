@@ -9,5 +9,8 @@ export const WelcomePage = () => (
       This is an app to help you learn how to star hop, or even hone your
       skills.
     </Text>
+    <Link to="/setup">
+      <Text>Start starhop training</Text>
+    </Link>
   </View>
 );

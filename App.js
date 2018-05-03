@@ -10,6 +10,7 @@ import reducers from './src/reducers';
 import { WelcomePage } from './src/containers/WelcomePage';
 import SetupMain from './src/containers/setup/SetupMain';
 import StarHopMain from './src/containers/starhop/StarHopMain';
+import StarChart from './src/containers/starchart/StarChart';
 
 export default class App extends Component {
   componentWillMount() {
@@ -23,6 +24,7 @@ export default class App extends Component {
           <Switch>
             <Route path="/setup" component={SetupMain} />
             <Route path="/starhop" component={StarHopMain} />
+            <Route path="/starchart" component={StarChart} />
             <Route component={WelcomePage} />
           </Switch>
         </NativeRouter>

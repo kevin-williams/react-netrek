@@ -12,5 +12,8 @@ export const WelcomePage = () => (
     <Link to="/setup">
       <Text style={{ color: 'blue' }}>Start starhop training</Text>
     </Link>
+    <Link to="/starchart">
+      <Text style={{ color: 'blue' }}>Show star chart</Text>
+    </Link>
   </View>
 );

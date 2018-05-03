@@ -10,7 +10,7 @@ export const WelcomePage = () => (
       skills.
     </Text>
     <Link to="/setup">
-      <Text>Start starhop training</Text>
+      <Text style={{ color: 'blue' }}>Start starhop training</Text>
     </Link>
   </View>
 );

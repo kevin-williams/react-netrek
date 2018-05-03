@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
-import { NativeRouter, Route } from 'react-router-native';
+import { NativeRouter, Route, Switch } from 'react-router-native';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
 
 import reducers from './src/reducers';
-import MainPage from './src/containers/MainPage';
+
+import { WelcomePage } from './src/containers/WelcomePage';
+import SetupMain from './src/containers/setup/SetupMain';
+import StarHopMain from './src/containers/starhop/StarHopMain';
 
 export default class App extends Component {
   componentWillMount() {
@@ -14,12 +17,14 @@ export default class App extends Component {
   }
 
   render() {
-    console.log('App rendering');
-
     return (
       <Provider store={createStore(reducers, {}, applyMiddleware(ReduxThunk))}>
         <NativeRouter>
-          <MainPage />
+          <Switch>
+            <Route path="/setup" component={SetupMain} />
+            <Route path="/starhop" component={StarHopMain} />
+            <Route component={WelcomePage} />
+          </Switch>
         </NativeRouter>
       </Provider>
     );

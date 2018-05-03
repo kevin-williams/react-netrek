@@ -12,16 +12,16 @@
         "source": "/home/kwilliams/repositories/research/starhop-mobile/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable-mdpi/abc_ic_menu_moreoverflow_mtrl_alpha.png"
     },
     {
-        "merged": "/home/kwilliams/repositories/research/starhop-mobile/android/app/build/intermediates/res/merged/debug/drawable-mdpi/abc_ic_menu_cut_mtrl_alpha.png",
-        "source": "/home/kwilliams/repositories/research/starhop-mobile/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable-mdpi/abc_ic_menu_cut_mtrl_alpha.png"
+        "merged": "/home/kwilliams/repositories/apps/starhop-mobile/android/app/build/intermediates/res/merged/debug/drawable-mdpi/abc_list_focused_holo.9.png",
+        "source": "/home/kwilliams/repositories/apps/starhop-mobile/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable-mdpi/abc_list_focused_holo.9.png"
     },
     {
         "merged": "/home/kwilliams/repositories/research/starhop-mobile/android/app/build/intermediates/res/merged/debug/drawable-mdpi/abc_btn_radio_to_on_mtrl_015.png",
         "source": "/home/kwilliams/repositories/research/starhop-mobile/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable-mdpi/abc_btn_radio_to_on_mtrl_015.png"
     },
     {
-        "merged": "/home/kwilliams/repositories/apps/starhop-mobile/android/app/build/intermediates/res/merged/debug/drawable-mdpi/abc_list_focused_holo.9.png",
-        "source": "/home/kwilliams/repositories/apps/starhop-mobile/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable-mdpi/abc_list_focused_holo.9.png"
+        "merged": "/home/kwilliams/repositories/research/starhop-mobile/android/app/build/intermediates/res/merged/debug/drawable-mdpi/abc_ic_menu_cut_mtrl_alpha.png",
+        "source": "/home/kwilliams/repositories/research/starhop-mobile/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable-mdpi/abc_ic_menu_cut_mtrl_alpha.png"
     },
     {
         "merged": "/home/kwilliams/repositories/apps/starhop-mobile/android/app/build/intermediates/res/merged/debug/drawable-mdpi/abc_btn_rating_star_on_mtrl_alpha.png",

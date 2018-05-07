@@ -15,5 +15,8 @@ export const WelcomePage = () => (
     <Link to="/starchart">
       <Text style={{ color: 'blue' }}>Show star chart</Text>
     </Link>
+    <Link to="/starhop">
+      <Text style={{ color: 'blue' }}>Show sample star map</Text>
+    </Link>
   </View>
 );

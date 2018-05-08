@@ -17,32 +17,23 @@ export class StarMap extends Component {
   };
 
   // Set both sizes to the same smaller dimension
-  state = {
-    width: SCREEN.width < SCREEN.height ? SCREEN.width : SCREEN.height,
-    height: SCREEN.height < SCREEN.width ? SCREEN.height : SCREEN.width
-  };
-
-  findCanvasLayout = event => {
-    const { width, height } = event.nativeEvent.layout;
-
-    console.log('found width, height', width, height);
-    // this.setState({ width, height });
-  };
 
   drawMap = canvas => {
-    console.log('start draw map', this.state.width, this.state.height);
-    const ctx = canvas.getContext('2d');
-    ctx.clearRect(0, 0, this.state.width, this.state.height);
+    let { view: myView, location, skyDarkness, size } = this.props;
 
-    let { view: myView, location, skyDarkness } = this.props;
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, size, size);
 
     // SkyDarkness is a percent, so adjust to be a decimal up to 1 magnitude
     myView.magAdjustment = skyDarkness / 100;
     myView.magLimitAdjusted = myView.magLimit - myView.magAdjustment;
-    myView.width = this.state.width;
-    myView.height = this.state.height;
+    myView.width = size;
+    myView.height = size;
 
-    // console.log('drawing map for ' + this.props.stars.length + ' stars with view=', myView);
+    console.log(
+      'drawing map for ' + this.props.stars.length + ' stars with view=',
+      myView
+    );
 
     // this.drawFOV(ctx, myView);
     // this.drawLocation(ctx, myView, location);
@@ -129,6 +120,8 @@ export class StarMap extends Component {
         halfSize = 0;
         ctx.fillStyle = 'White';
       }
+
+      ctx.fillStyle = 'White';
       console.log(
         `drawing star (${ra}, ${dec}) at x=${x} y=${y} size=${size} mag=${mag} for fov=${
           view.fov
@@ -145,11 +138,10 @@ export class StarMap extends Component {
     console.log('StarMap props=', this.props);
     return (
       <View
-        onLayout={this.findCanvasLayout}
         style={{
           backgroundColor: 'black',
-          width: this.state.width,
-          height: this.state.height
+          width: this.props.size,
+          height: this.props.size
         }}
       >
         <Canvas ref={this.drawMap} />

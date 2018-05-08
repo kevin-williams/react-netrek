@@ -10,8 +10,7 @@ export default class StarHopMain extends Component {
     // console.log('messier=', MESSIER);
 
     return (
-      <View>
-        <Text> StarHop Main </Text>
+      <View style={{ width: 411, height: 411 }}>
         <StarMap
           stars={STARS0.stars}
           dsos={dsos}
@@ -20,6 +19,7 @@ export default class StarHopMain extends Component {
             ra: 0.5,
             dec: 38.92
           }}
+          size={400}
         />
       </View>
     );

@@ -12,7 +12,7 @@ import Star from './svg/Star';
 import StarGradient from './svg/StarGradient';
 import { getXYCoords, isInView } from '../utils';
 
-import m57 from '../../assets/images/m57.jpg';
+import M81 from '../../assets/images/M81.png';
 
 export class StarMap extends Component {
   static propTypes = {
@@ -24,6 +24,12 @@ export class StarMap extends Component {
     dsoMagLimit: PropTypes.number,
     updateLocation: PropTypes.func
   };
+
+  drawDSOs() {
+    // TODO check the dsos array for real
+
+    return <Image x="5" y="5" href={M81} />;
+  }
 
   drawStars() {
     let { view, location, size } = this.props;
@@ -58,6 +64,7 @@ export class StarMap extends Component {
       <Svg width={this.props.size} height={this.props.size}>
         <StarGradient />
         <Rect width={this.props.size} height={this.props.size} fill="#000" />
+        {this.drawDSOs()}
         {this.drawStars()}
       </Svg>
     );

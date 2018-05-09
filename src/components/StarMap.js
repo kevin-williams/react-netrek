@@ -3,12 +3,16 @@ import PropTypes from 'prop-types';
 import Svg, {
   ClipPath,
   Defs,
+  Image,
   RadialGradient,
   Rect,
   Stop
 } from 'react-native-svg';
 import Star from './svg/Star';
-import StarGradients from './svg/StarGradients';
+import StarGradient from './svg/StarGradient';
+import { getXYCoords } from '../utils';
+
+import m57 from '../../assets/images/m57.jpg';
 
 export class StarMap extends Component {
   static propTypes = {
@@ -21,12 +25,38 @@ export class StarMap extends Component {
     updateLocation: PropTypes.func
   };
 
+  drawStars() {
+    let { view, location, skyDarkness, size } = this.props;
+    view.width = size;
+    view.height = size;
+
+    return this.props.stars.map(starEntry => {
+      let { ra, dec, mag } = starEntry;
+      let { x, y } = getXYCoords(ra, dec, view, location);
+      if (x < 0 || y < 0 || x > view.width || y > view.height) {
+        return;
+      }
+
+      let radius = Math.floor(10 - mag);
+      if (radius < 1) {
+        radius = 1;
+      }
+
+      //   console.log('drawing star at ', x, y, radius);
+
+      return <Star key={`${ra}|${dec}`} cx={x} cy={y} radius={radius} />;
+    });
+  }
+
   render() {
     return (
       <Svg width={this.props.size} height={this.props.size}>
-        <StarGradients />
+        <StarGradient />
         <Rect width={this.props.size} height={this.props.size} fill="#000" />
-        <Star radius={10} />
+        {/* <Star cx={20} cy={20} radius={10} />
+        <Star cx={50} cy={50} radius={20} />
+        <Image x={75} y={75} href={m57} /> */}
+        {this.drawStars()}
       </Svg>
     );
   }

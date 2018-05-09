@@ -15,10 +15,8 @@ export default class Star extends Component {
 
   render() {
     const { radius, ...rest } = this.props;
-    const fillStr = radius > 2 ? `url(#rad${radius})` : 'white';
+    const fillStr = radius > 2 ? 'url(#star)' : 'white';
 
-    return (
-      <Circle cx={radius} cy={radius} r={radius} fill={fillStr} {...rest} />
-    );
+    return <Circle r={radius} fill={fillStr} {...rest} />;
   }
 }

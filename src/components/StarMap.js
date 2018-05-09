@@ -10,7 +10,7 @@ import Svg, {
 } from 'react-native-svg';
 import Star from './svg/Star';
 import StarGradient from './svg/StarGradient';
-import { getXYCoords } from '../utils';
+import { getXYCoords, isInView } from '../utils';
 
 import m57 from '../../assets/images/m57.jpg';
 
@@ -37,13 +37,8 @@ export class StarMap extends Component {
     return this.props.stars.map(starEntry => {
       let { ra, dec, mag } = starEntry;
       let { x, y } = getXYCoords(ra, dec, view, location);
-      if (
-        x < 0 ||
-        y < 0 ||
-        x > view.width ||
-        y > view.height ||
-        mag > view.magLimitAdjusted
-      ) {
+
+      if (!isInView(x, y, mag, view)) {
         return;
       }
 
@@ -63,9 +58,6 @@ export class StarMap extends Component {
       <Svg width={this.props.size} height={this.props.size}>
         <StarGradient />
         <Rect width={this.props.size} height={this.props.size} fill="#000" />
-        {/* <Star cx={20} cy={20} radius={10} />
-        <Star cx={50} cy={50} radius={20} />
-        <Image x={75} y={75} href={m57} /> */}
         {this.drawStars()}
       </Svg>
     );

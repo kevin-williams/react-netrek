@@ -26,3 +26,17 @@ export function getXYCoords(ra, dec, view, location) {
 
   return { x: x + offsetX, y: y + offsetY };
 }
+
+export function isInView(x, y, mag, view) {
+  if (
+    x < 0 ||
+    y < 0 ||
+    x > view.width ||
+    y > view.height ||
+    mag > view.magLimitAdjusted
+  ) {
+    return false;
+  }
+
+  return true;
+}

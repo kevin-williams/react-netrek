@@ -10,11 +10,11 @@ export default class StarHopMain extends Component {
     // console.log('messier=', MESSIER);
 
     return (
-      <View style={{ width: 411, height: 411 }}>
+      <View>
         <StarMap
           stars={STARS0.stars}
           dsos={dsos}
-          view={{ fov: 7, magLimit: 15, skyDarkness: 0 }}
+          view={{ fov: 7, magLimit: 8, skyDarkness: 0 }}
           location={{
             ra: 0.5,
             dec: 38.92

@@ -26,14 +26,24 @@ export class StarMap extends Component {
   };
 
   drawStars() {
-    let { view, location, skyDarkness, size } = this.props;
+    let { view, location, size } = this.props;
+    view.magAdjustment = view.skyDarkness / 100;
+    view.magLimitAdjusted = view.magLimit - view.magAdjustment;
     view.width = size;
     view.height = size;
+
+    console.log('drawStars', view);
 
     return this.props.stars.map(starEntry => {
       let { ra, dec, mag } = starEntry;
       let { x, y } = getXYCoords(ra, dec, view, location);
-      if (x < 0 || y < 0 || x > view.width || y > view.height) {
+      if (
+        x < 0 ||
+        y < 0 ||
+        x > view.width ||
+        y > view.height ||
+        mag > view.magLimitAdjusted
+      ) {
         return;
       }
 

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { PanResponder } from 'react-native';
 import PropTypes from 'prop-types';
 import { ClipPath, Defs, G, Rect, Stop } from 'react-native-svg';
 import { Dso, Star, StarGradient } from './svg';
+import { RA_TO_DEG } from '../utils';
 
 export class StarMap extends Component {
   static propTypes = {
@@ -13,6 +15,34 @@ export class StarMap extends Component {
     dsoMagLimit: PropTypes.number,
     updateLocation: PropTypes.func
   };
+
+  componentWillMount() {
+    if (this.props.updateLocation) {
+      this.panResponder = PanResponder.create({
+        onStartShouldSetPanResponder: () => true,
+        onPanResponderMove: (event, gesture) => {
+          const { view, location, updateLocation } = this.props;
+          //   console.log('gesture=', gesture.dx, gesture.dy);
+          let scaleX = view.width / view.fov / RA_TO_DEG * 1.5;
+          let scaleY = view.height / view.fov * 1.5;
+
+          let newLocation = {
+            ra: location.ra + gesture.dx / scaleX,
+            dec: location.dec + gesture.dy / scaleY
+          };
+
+          updateLocation(newLocation);
+        },
+        onPanResponderRelease: (event, gesture) => {
+          console.log('release=', gesture);
+        }
+      });
+    } else {
+      console.log(
+        'No updateLocation function, so no need to attach PanResponder'
+      );
+    }
+  }
 
   drawDSOs(view, location) {
     console.log('drawDSOs', view);
@@ -56,8 +86,12 @@ export class StarMap extends Component {
   render() {
     const view = this.getView();
     const location = this.props.location;
+    const panHanlders = this.props.updateLocation
+      ? this.panResponder.panHandlers
+      : null;
+
     return (
-      <G>
+      <G {...panHanlders}>
         <StarGradient />
         <Rect width={this.props.size} height={this.props.size} fill="#000" />
         {this.drawDSOs(view, location)}

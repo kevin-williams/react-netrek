@@ -21,6 +21,7 @@ class StarHopMain extends Component {
             location={this.props.starhop.location}
             skyDarkness={this.props.starhop.skyDarkness}
             size={400}
+            updateLocation={this.props.updateLocation}
           />
         </Svg>
         <Svg width={300} height={300}>
@@ -31,6 +32,7 @@ class StarHopMain extends Component {
             location={this.props.starhop.location}
             skyDarkness={this.props.starhop.skyDarkness}
             size={300}
+            updateLocation={this.props.updateLocation}
           />
         </Svg>
       </View>

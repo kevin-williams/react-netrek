@@ -1,22 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Svg, {
-  ClipPath,
-  Defs,
-  Image,
-  RadialGradient,
-  Rect,
-  Stop
-} from 'react-native-svg';
-import Star from './svg/Star';
-import StarGradient from './svg/StarGradient';
-import { IMAGES } from '../../assets/images';
-import {
-  ARCMINUTE_TO_DEG,
-  getXYCoords,
-  isInView,
-  HALF_IMG_WIDTH
-} from '../utils';
+import { ClipPath, Defs, G, Rect, Stop } from 'react-native-svg';
+import { Dso, Star, StarGradient } from './svg';
 
 export class StarMap extends Component {
   static propTypes = {
@@ -29,85 +14,55 @@ export class StarMap extends Component {
     updateLocation: PropTypes.func
   };
 
-  drawDSOs() {
-    // TODO check the dsos array for real
-    let { view, location, size } = this.props;
-    view.magAdjustment = view.skyDarkness / 100;
-    view.magLimitAdjusted = view.magLimit - view.magAdjustment;
-    view.width = size;
-    view.height = size;
+  drawDSOs(view, location) {
+    console.log('drawDSOs', view);
 
+    return this.props.dsos.map(dso => (
+      <Dso
+        key={`${dso.cat1}${dso.id1}`}
+        dso={dso}
+        view={view}
+        location={location}
+      />
+    ));
+  }
+
+  drawStars(view, location) {
     console.log('drawStars', view);
 
-    return this.props.dsos.map(dso => {
-      let { ra, dec, r1, r2, angle, cat1, id1, mag } = dso;
-      if (!r2) {
-        r2 = r1;
-      }
-      let { x, y } = getXYCoords(ra, dec, view, location);
-
-      if (!isInView(x, y, mag, view)) {
-        return;
-      }
-
-      let scale = view.height / view.fov; // 1.3 fudge factor to make up for image size
-      let dsoWidth = Math.ceil(r1 * ARCMINUTE_TO_DEG * scale);
-      let dsoHeight = Math.ceil(r2 * ARCMINUTE_TO_DEG * scale);
-
-      let dsoName = `${cat1}${id1}`;
-
-      //   console.log(`drawing dso ${dsoName} x=${x} y=${y} mag=${mag}
-      //     width=${dsoWidth}, height=${dsoHeight}, scale=${scale}`);
-
+    return this.props.stars.map(star => {
+      let { ra, dec } = star;
       return (
-        <Image
-          key={dsoName}
-          x={x - dsoWidth / 2}
-          y={y - dsoHeight / 2}
-          width={dsoWidth}
-          height={dsoHeight}
-          href={IMAGES[dsoName].img}
+        <Star
+          key={`${ra}|${dec}`}
+          star={star}
+          view={view}
+          location={location}
         />
       );
     });
   }
 
-  drawStars() {
-    let { view, location, size } = this.props;
+  getView() {
+    let { view, size } = this.props;
     view.magAdjustment = view.skyDarkness / 100;
     view.magLimitAdjusted = view.magLimit - view.magAdjustment;
     view.width = size;
     view.height = size;
 
-    console.log('drawStars', view);
-
-    return this.props.stars.map(starEntry => {
-      let { ra, dec, mag } = starEntry;
-      let { x, y } = getXYCoords(ra, dec, view, location);
-
-      if (!isInView(x, y, mag, view)) {
-        return;
-      }
-
-      let radius = Math.floor(10 - mag);
-      if (radius < 1) {
-        radius = 1;
-      }
-
-      //   console.log('drawing star at ', x, y, radius);
-
-      return <Star key={`${ra}|${dec}`} cx={x} cy={y} radius={radius} />;
-    });
+    return view;
   }
 
   render() {
+    const view = this.getView();
+    const location = this.props.location;
     return (
-      <Svg width={this.props.size} height={this.props.size}>
+      <G>
         <StarGradient />
         <Rect width={this.props.size} height={this.props.size} fill="#000" />
-        {this.drawDSOs()}
-        {this.drawStars()}
-      </Svg>
+        {this.drawDSOs(view, location)}
+        {this.drawStars(view, location)}
+      </G>
     );
   }
 }

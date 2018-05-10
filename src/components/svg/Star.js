@@ -8,15 +8,27 @@ import Svg, {
   RadialGradient
 } from 'react-native-svg';
 
-export default class Star extends Component {
-  static propTypes = {
-    radius: PropTypes.number.isRequired
-  };
+import { getXYCoords, isInView } from '../../utils';
 
-  render() {
-    const { radius, ...rest } = this.props;
-    const fillStr = radius > 2 ? 'url(#star)' : 'white';
+const Star = props => {
+  const { star, view, location } = props;
+  const fillStr = radius > 2 ? 'url(#star)' : 'white';
 
-    return <Circle r={radius} fill={fillStr} {...rest} />;
+  let { ra, dec, mag } = star;
+  let { x, y } = getXYCoords(ra, dec, view, location);
+
+  if (!isInView(x, y, mag, view)) {
+    return null;
   }
-}
+
+  let radius = Math.floor(10 - mag);
+  if (radius < 1) {
+    radius = 1;
+  }
+
+  //   console.log('drawing star at ', x, y, radius);
+
+  return <Circle r={radius} fill={fillStr} cx={x} cy={y} radius={radius} />;
+};
+
+export { Star };

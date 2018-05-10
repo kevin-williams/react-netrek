@@ -7,7 +7,7 @@ import Svg, {
   Stop
 } from 'react-native-svg';
 
-export default () => {
+const StarGradient = () => {
   return (
     <Defs>
       <RadialGradient id="star">
@@ -19,3 +19,5 @@ export default () => {
     </Defs>
   );
 };
+
+export { StarGradient };

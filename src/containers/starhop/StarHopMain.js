@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
+import Svg from 'react-native-svg';
+
 import { StarMap } from '../../components/StarMap';
 
 import { dsos } from '../../../assets/db/messier.json';
@@ -10,17 +12,19 @@ export default class StarHopMain extends Component {
     // console.log('messier=', MESSIER);
 
     return (
-      <View>
-        <StarMap
-          stars={STARS0.stars}
-          dsos={dsos}
-          view={{ fov: 3, magLimit: 15, skyDarkness: 0 }}
-          location={{
-            ra: 0.75,
-            dec: 41.25
-          }}
-          size={400}
-        />
+      <View style={{ alignItems: 'center' }}>
+        <Svg width={400} height={400}>
+          <StarMap
+            stars={STARS0.stars}
+            dsos={dsos}
+            view={{ fov: 7, magLimit: 15, skyDarkness: 0 }}
+            location={{
+              ra: 0.7,
+              dec: 41.25
+            }}
+            size={400}
+          />
+        </Svg>
       </View>
     );
   }

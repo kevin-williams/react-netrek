@@ -12,7 +12,7 @@ export default class StarHopMain extends Component {
     // console.log('messier=', MESSIER);
 
     return (
-      <View style={{ alignItems: 'center' }}>
+      <View style={{ alignItems: 'center', backgroundColor: 'black', flex: 1 }}>
         <Svg width={400} height={400}>
           <StarMap
             stars={STARS0.stars}

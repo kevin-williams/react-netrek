@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 import Svg from 'react-native-svg';
+import { connect } from 'react-redux';
 
 import { StarMap } from '../../components/StarMap';
-
-import { dsos } from '../../../assets/db/messier.json';
-import STARS0 from '../../../assets/db/stars0.json';
-export default class StarHopMain extends Component {
+import { updateLocation } from './starHopActions';
+class StarHopMain extends Component {
   render() {
+    console.log('starhop=', this.props.starhop);
     // console.log('stars=', STARS);
     // console.log('messier=', MESSIER);
 
@@ -15,17 +15,33 @@ export default class StarHopMain extends Component {
       <View style={{ alignItems: 'center', backgroundColor: 'black', flex: 1 }}>
         <Svg width={400} height={400}>
           <StarMap
-            stars={STARS0.stars}
-            dsos={dsos}
-            view={{ fov: 7, magLimit: 15, skyDarkness: 0 }}
-            location={{
-              ra: 0.7,
-              dec: 41.25
-            }}
+            stars={this.props.starhop.stars}
+            dsos={this.props.starhop.dsos}
+            view={this.props.starhop.view}
+            location={this.props.starhop.location}
+            skyDarkness={this.props.starhop.skyDarkness}
             size={400}
+          />
+        </Svg>
+        <Svg width={300} height={300}>
+          <StarMap
+            stars={this.props.starhop.stars}
+            dsos={this.props.starhop.dsos}
+            view={this.props.starhop.eyepieceView}
+            location={this.props.starhop.location}
+            skyDarkness={this.props.starhop.skyDarkness}
+            size={300}
           />
         </Svg>
       </View>
     );
   }
 }
+
+const mapStateToProps = state => state;
+
+const dispatchToProps = {
+  updateLocation
+};
+
+export default connect(mapStateToProps, dispatchToProps)(StarHopMain);

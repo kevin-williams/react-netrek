@@ -3,7 +3,7 @@
     "serviceFailure": false,
     "message": "success"
   },
-  "dsos": [
+  "DSOS": [
     {
       "ra": "0.67275",
       "dec": "41.6906",

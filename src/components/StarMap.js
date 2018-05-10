@@ -44,8 +44,8 @@ export class StarMap extends Component {
   }
 
   getView() {
-    let { view, size } = this.props;
-    view.magAdjustment = view.skyDarkness / 100;
+    let { view, size, skyDarkness } = this.props;
+    view.magAdjustment = skyDarkness / 100;
     view.magLimitAdjusted = view.magLimit - view.magAdjustment;
     view.width = size;
     view.height = size;

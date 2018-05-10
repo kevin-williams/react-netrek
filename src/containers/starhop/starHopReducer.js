@@ -1,21 +1,17 @@
 import * as c from './starHopConstants';
 
-import { dsos } from '../../../assets/db/messier.json';
+import { STARS, DSOS } from '../../../assets/db';
 
 import { isInView } from '../../utils';
 
 const DEFAULT_FINDER_VIEW = {
   fov: 7,
-  magLimit: 8,
-  width: 600,
-  height: 600
+  magLimit: 8
 };
 
 const DEFAULT_EYEPIECE_VIEW = {
   fov: 1.5,
   magLimit: 12,
-  width: 300,
-  height: 300,
   scopeType: 'Dobsonian'
 };
 
@@ -23,14 +19,14 @@ const TARGET_FOUND_RA_OFFSET = 0.03;
 const TARGET_FOUND_DEC_OFFSET = 0.2;
 
 export const defaultState = {
-  stars: STARS0,
-  dsos,
+  stars: STARS.STARS0,
+  dsos: DSOS,
   view: DEFAULT_FINDER_VIEW,
   eyepieceView: DEFAULT_EYEPIECE_VIEW,
   skyDarkness: 0,
   location: {
-    ra: -1,
-    dec: -1
+    ra: 0.7,
+    dec: 41.25
   },
   selectedHop: {
     id: '',

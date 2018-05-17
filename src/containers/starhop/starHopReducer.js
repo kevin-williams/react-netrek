@@ -80,7 +80,7 @@ export default function userReducer(state = defaultState, action) {
       };
 
     case c.UPDATE_LOCATION:
-      console.log('updating location to new location', action.location);
+      // console.log('updating location to new location', action.location);
       let targetFound = viewContainsTarget(
         state.location,
         state.eyepieceView,

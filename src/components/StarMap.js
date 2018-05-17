@@ -34,7 +34,7 @@ export class StarMap extends Component {
           updateLocation(newLocation);
         },
         onPanResponderRelease: (event, gesture) => {
-          console.log('release=', gesture);
+        //   console.log('release=', gesture);
         }
       });
     } else {
@@ -45,7 +45,7 @@ export class StarMap extends Component {
   }
 
   drawDSOs(view, location) {
-    console.log('drawDSOs', view);
+    // console.log('drawDSOs', view);
 
     return this.props.dsos.map(dso => (
       <Dso
@@ -58,7 +58,7 @@ export class StarMap extends Component {
   }
 
   drawStars(view, location) {
-    console.log('drawStars', view);
+    // console.log('drawStars', view);
 
     return this.props.stars.map(star => {
       let { ra, dec } = star;

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { ScrollView, Text, View } from 'react-native';
 import Svg from 'react-native-svg';
 import { connect } from 'react-redux';
 
@@ -13,28 +13,24 @@ class StarHopMain extends Component {
 
     return (
       <View style={{ alignItems: 'center', backgroundColor: 'black', flex: 1 }}>
-        <Svg width={400} height={400}>
-          <StarMap
-            stars={this.props.starhop.stars}
-            dsos={this.props.starhop.dsos}
-            view={this.props.starhop.view}
-            location={this.props.starhop.location}
-            skyDarkness={this.props.starhop.skyDarkness}
-            size={400}
-            updateLocation={this.props.updateLocation}
-          />
-        </Svg>
-        <Svg width={300} height={300}>
-          <StarMap
-            stars={this.props.starhop.stars}
-            dsos={this.props.starhop.dsos}
-            view={this.props.starhop.eyepieceView}
-            location={this.props.starhop.location}
-            skyDarkness={this.props.starhop.skyDarkness}
-            size={300}
-            updateLocation={this.props.updateLocation}
-          />
-        </Svg>
+        <ScrollView
+          contentContainerStyle={{ width: 1000, height: 1000 }}
+          onScrollEndDrag={event =>
+            console.log('scroll drag end', event.nativeEvent.contentOffset)
+          }
+        >
+          <Svg width={1000} height={1000}>
+            <StarMap
+              stars={this.props.starhop.stars}
+              dsos={this.props.starhop.dsos}
+              view={this.props.starhop.view}
+              location={this.props.starhop.location}
+              skyDarkness={this.props.starhop.skyDarkness}
+              size={1000}
+              updateLocation={this.props.updateLocation}
+            />
+          </Svg>
+        </ScrollView>
       </View>
     );
   }

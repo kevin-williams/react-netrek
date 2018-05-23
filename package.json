@@ -4,11 +4,19 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
+    "server": "react-native start --verbose",
+    "emulator": "react-native run-android --no-packager",
+    "bundle":
+      "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res",
+    "release": "cd android && ./gradlew assembleRelease",
+    "install-android":
+      "adb install -r ./android/app/build/outputs/apk/app-release.apk",
     "test": "jest"
   },
   "dependencies": {
     "react": "16.3.1",
     "react-native": "0.55.3",
+    "react-native-directed-scrollview": "^1.3.7",
     "react-native-svg": "^6.3.1",
     "react-redux": "^5.0.7",
     "react-router-native": "^4.2.0",

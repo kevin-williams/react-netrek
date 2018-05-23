@@ -6,13 +6,17 @@ import { isInView } from '../../utils';
 
 const DEFAULT_FINDER_VIEW = {
   fov: 7,
-  magLimit: 8
+  magLimit: 8,
+  width: 400,
+  height: 400
 };
 
 const DEFAULT_EYEPIECE_VIEW = {
   fov: 1.5,
   magLimit: 12,
-  scopeType: 'Dobsonian'
+  scopeType: 'Dobsonian',
+  width: 400,
+  height: 400
 };
 
 const TARGET_FOUND_RA_OFFSET = 0.03;
@@ -57,6 +61,7 @@ export const defaultState = {
 };
 
 export default function userReducer(state = defaultState, action) {
+  console.log('starhopReducer action=', action);
   switch (action.type) {
     case c.GET_STARS_SUCCESS:
     case c.GET_STARS_FAILURE:

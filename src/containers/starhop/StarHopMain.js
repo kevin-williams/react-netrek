@@ -43,14 +43,14 @@ class StarHopMain extends Component {
           contentContainerStyle={{ width: 1000, height: 1000 }}
           onScrollEndDrag={this.updateLocation}
         >
-          <Svg width={1000} height={1000}>
+          <Svg width={1200} height={1200}>
             <StarMap
               stars={this.props.starhop.stars}
               dsos={this.props.starhop.dsos}
               view={this.props.starhop.view}
               location={this.props.starhop.location}
               skyDarkness={this.props.starhop.skyDarkness}
-              size={1000}
+              size={400}
               updateLocation={this.props.updateLocation}
             />
           </Svg>

@@ -8,7 +8,7 @@ import Svg, {
   RadialGradient
 } from 'react-native-svg';
 
-import { getXYCoords, isInView } from '../../utils';
+import { getXYCoords, isOnMap } from '../../utils';
 
 const Star = props => {
   const { star, view, location } = props;
@@ -17,7 +17,7 @@ const Star = props => {
   let { ra, dec, mag } = star;
   let { x, y } = getXYCoords(ra, dec, view, location);
 
-  if (!isInView(x, y, mag, view)) {
+  if (!isOnMap(x, y, mag, view)) {
     return null;
   }
 

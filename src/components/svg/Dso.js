@@ -4,8 +4,8 @@ import { Image } from 'react-native-svg';
 import {
   ARCMINUTE_TO_DEG,
   getXYCoords,
-  isInView,
-  HALF_IMG_WIDTH
+  HALF_IMG_WIDTH,
+  isOnMap
 } from '../../utils';
 import { IMAGES } from '../../../assets/images';
 
@@ -17,7 +17,7 @@ const Dso = props => {
   }
   let { x, y } = getXYCoords(ra, dec, view, location);
 
-  if (!isInView(x, y, mag, view)) {
+  if (!isOnMap(x, y, mag, view)) {
     return null;
   }
 

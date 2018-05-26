@@ -48,3 +48,8 @@ export function isInView(x, y, mag, view) {
 
   return true;
 }
+
+export function isOnMap(x, y, mag, view) {
+  const myView = { width: view.width * 3, height: view.height * 3 };
+  return isInView(x, y, mag, myView);
+}

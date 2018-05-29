@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Animated, View, Text } from 'react-native'
+import { Animated, PanResponder, View, Text } from 'react-native'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Svg from 'react-native-svg';
@@ -15,7 +15,25 @@ class StarMapView extends Component {
         view: PropTypes.object.isRequired,
     }
 
-    updateLocation = event => {
+    constructor(props) {
+        super(props);
+
+        this.position = new Animated.ValueXY();
+
+        this.panResponder = PanResponder.create({
+            onStartShouldSetPanResponder: () => true,
+            onPanResponderMove: (event, gesture) => {
+                // console.log('gesture=', gesture);
+                this.position.setValue({ x: gesture.dx, y: gesture.dy });
+            },
+            onPanResponderRelease: (event, gesture) => {
+                updateLocation(gesture);
+            }
+        });
+    }
+
+
+    updateLocation = gesture => {
         const { view, location } = this.props.starhop;
 
         let scaleX = view.width / view.fov / RA_TO_DEG * 1.5;
@@ -24,8 +42,8 @@ class StarMapView extends Component {
         console.log('scaleX, scaleY', scaleX, scaleY);
 
         let newLocation = {
-            ra: location.ra + contentOffset.x / scaleX,
-            dec: location.dec + contentOffset.y / scaleY
+            ra: location.ra + gesture.dx / scaleX,
+            dec: location.dec + gesture.dy / scaleY
         };
 
         console.log('newLocation=', newLocation);
@@ -35,7 +53,12 @@ class StarMapView extends Component {
 
     render() {
         return (
-            <Animated.View style={{ width: this.props.size, height: this.props.size }}>
+            <Animated.View {...this.panResponder.panHandlers}
+                style={{
+                    width: this.props.size * 3,
+                    height: this.props.size * 3,
+                    transform: [{ translateX: this.position.x }, { translateY: this.position.y }]
+                }}>
                 <Svg width={this.props.size * 3} height={this.props.size * 3}>
                     <StarMap
                         stars={this.props.starhop.stars}

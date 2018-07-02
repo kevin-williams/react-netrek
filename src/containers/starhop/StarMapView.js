@@ -7,7 +7,7 @@ import Svg from 'react-native-svg';
 import { StarMap } from '../../components/StarMap';
 import { updateLocation } from './starHopActions';
 
-import { RA_TO_DEG } from '../../utils';
+import { RA_TO_DEG, getXYCoords } from '../../utils';
 
 class StarMapView extends Component {
     static propTypes = {
@@ -23,32 +23,40 @@ class StarMapView extends Component {
         this.panResponder = PanResponder.create({
             onStartShouldSetPanResponder: () => true,
             onPanResponderMove: (event, gesture) => {
-                // console.log('gesture=', gesture);
-                this.position.setValue({ x: gesture.dx, y: gesture.dy });
+                // console.log('gesture=' + JSON.stringify(gesture));
+                // console.log('position=' + JSON.stringify(this.position));
+                this.position.setValue(this.calculatePosition(gesture));
             },
             onPanResponderRelease: (event, gesture) => {
-                updateLocation(gesture);
+                this.updateLocation(gesture);
             }
         });
     }
 
+    /**
+     * We'll use the same calculation as updateLocation, then revert it back to offset for the animation
+     */
+    calculatePosition = gesture => {
+        return { x: gesture.dx, y: gesture.dy };
+    }
 
-    updateLocation = gesture => {
+    calculateLocation = gesture => {
         const { view, location } = this.props.starhop;
 
         let scaleX = view.width / view.fov / RA_TO_DEG * 1.5;
         let scaleY = view.height / view.fov * 1.5;
 
-        console.log('scaleX, scaleY', scaleX, scaleY);
+        // console.log('scaleX, scaleY', scaleX, scaleY);
 
-        let newLocation = {
+        return {
             ra: location.ra + gesture.dx / scaleX,
             dec: location.dec + gesture.dy / scaleY
         };
 
-        console.log('newLocation=', newLocation);
+    }
 
-        this.props.updateLocation(newLocation);
+    updateLocation = gesture => {
+        this.props.updateLocation(this.calculateLocation(gesture));
     };
 
     render() {
@@ -67,7 +75,6 @@ class StarMapView extends Component {
                         location={this.props.starhop.location}
                         skyDarkness={this.props.starhop.skyDarkness}
                         size={this.props.size}
-                        updateLocation={this.props.updateLocation}
                     />
                 </Svg>
             </Animated.View>

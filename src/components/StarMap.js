@@ -13,36 +13,7 @@ export class StarMap extends Component {
     view: PropTypes.object.isRequired,
     starMagLimit: PropTypes.number,
     dsoMagLimit: PropTypes.number,
-    updateLocation: PropTypes.func
   };
-
-  // componentWillMount() {
-  //   if (this.props.updateLocation) {
-  //     this.panResponder = PanResponder.create({
-  //       onStartShouldSetPanResponder: () => true,
-  //       onPanResponderMove: (event, gesture) => {
-  //         const { view, location, updateLocation } = this.props;
-  //         //   console.log('gesture=', gesture.dx, gesture.dy);
-  //         let scaleX = view.width / view.fov / RA_TO_DEG * 1.5;
-  //         let scaleY = view.height / view.fov * 1.5;
-
-  //         let newLocation = {
-  //           ra: location.ra + gesture.dx / scaleX,
-  //           dec: location.dec + gesture.dy / scaleY
-  //         };
-
-  //         updateLocation(newLocation);
-  //       },
-  //       onPanResponderRelease: (event, gesture) => {
-  //         //   console.log('release=', gesture);
-  //       }
-  //     });
-  //   } else {
-  //     console.log(
-  //       'No updateLocation function, so no need to attach PanResponder'
-  //     );
-  //   }
-  // }
 
   drawDSOs(view, location) {
     // console.log('drawDSOs', view);

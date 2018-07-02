@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import { ScrollView, Text, View } from 'react-native';
-import Svg from 'react-native-svg';
+import { View } from 'react-native';
 import { connect } from 'react-redux';
+import { BackButton } from "react-router-native";
 
-import { StarMap } from '../../components/StarMap';
 import { updateLocation } from './starHopActions';
 
-import { RA_TO_DEG } from '../../utils';
 import StarMapView from './StarMapView';
 
 class StarHopMain extends Component {
@@ -18,6 +16,7 @@ class StarHopMain extends Component {
 
     return (
       <View style={{ alignItems: 'center', backgroundColor: 'black', flex: 1 }}>
+        <BackButton />
         <StarMapView size={400} view={this.props.starhop.view} />
       </View>
     );

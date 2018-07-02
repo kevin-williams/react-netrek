@@ -43,23 +43,26 @@ class StarMapView extends Component {
     calculateLocation = gesture => {
         const { view, location } = this.props.starhop;
 
-        let scaleX = view.width / view.fov / RA_TO_DEG * 1.5;
-        let scaleY = view.height / view.fov * 1.5;
+        let widthRA = view.fov * RA_TO_DEG / 2;
+        let widthDec = view.fov / 2;
 
-        // console.log('scaleX, scaleY', scaleX, scaleY);
+        let ra = location.ra + (2 * gesture.dx * widthRA / view.width);
+        let dec = location.dec + (2 * gesture.dy * widthDec / view.height);
 
-        return {
-            ra: location.ra + gesture.dx / scaleX,
-            dec: location.dec + gesture.dy / scaleY
-        };
+        console.log('ra, dec', ra, dec);
 
+        return { ra, dec };
     }
 
     updateLocation = gesture => {
-        this.props.updateLocation(this.calculateLocation(gesture));
+        let newLocation = this.calculateLocation(gesture);
+        console.log('updateLocation=', newLocation);
+        this.props.updateLocation(newLocation);
+        this.position.setValue({ x: 0, y: 0 });
     };
 
     render() {
+        console.log('this.position', JSON.stringify(this.position));
         return (
             <Animated.View {...this.panResponder.panHandlers}
                 style={{

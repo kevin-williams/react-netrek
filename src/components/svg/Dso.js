@@ -27,8 +27,8 @@ const Dso = props => {
 
   let dsoName = `${cat1}${id1}`;
 
-  console.log(`drawing dso ${dsoName} x=${x} y=${y} mag=${mag}
-      width=${dsoWidth}, height=${dsoHeight}, scale=${scale}`);
+  // console.log(`drawing dso ${dsoName} x=${x} y=${y} mag=${mag}
+  //     width=${dsoWidth}, height=${dsoHeight}, scale=${scale}`);
 
   return (
     <Image

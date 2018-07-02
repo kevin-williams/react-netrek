@@ -14,8 +14,8 @@ export function getXYCoords(ra, dec, view, location) {
   //   console.log('getXY', ra, dec, view, location);
 
   // Center of Canvas
-  let x = view.width / 2;
-  let y = view.height / 2;
+  let centerX = view.width / 2;
+  let centerY = view.height / 2;
 
   let widthRA = view.fov * RA_TO_DEG / 2;
   let widthDec = view.fov / 2;
@@ -32,7 +32,7 @@ export function getXYCoords(ra, dec, view, location) {
   //     console.log('getXY calcs', x, y, widthRA, widthDec, offsetX, offsetY);
   //   }
 
-  return { x: x + offsetX, y: y + offsetY };
+  return { x: centerX + offsetX, y: centerY + offsetY, offsetX, offsetY };
 }
 
 export function isInView(x, y, mag, view) {

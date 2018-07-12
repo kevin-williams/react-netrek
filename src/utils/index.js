@@ -17,11 +17,11 @@ export function getXYCoords(ra, dec, view, location) {
   let centerX = view.width / 2;
   let centerY = view.height / 2;
 
-  let widthRA = view.fov * RA_TO_DEG / 2;
+  let widthRA = (view.fov * RA_TO_DEG) / 2;
   let widthDec = view.fov / 2;
 
-  let offsetX = (location.ra - ra) / widthRA * view.width / 2;
-  let offsetY = (location.dec - dec) / widthDec * view.height / 2;
+  let offsetX = (((location.ra - ra) / widthRA) * view.width) / 2;
+  let offsetY = (((location.dec - dec) / widthDec) * view.height) / 2;
 
   //   if (
   //     offsetX > 0 &&
@@ -50,6 +50,22 @@ export function isInView(x, y, mag, view) {
 }
 
 export function isOnMap(x, y, mag, view) {
-  const myView = { width: view.width * 3, height: view.height * 3 };
-  return isInView(x, y, mag, myView);
+  const { width, height } = view;
+
+  const left = -3 * width;
+  const right = 3 * width;
+  const top = -3 * height;
+  const bottom = 3 * height;
+
+  if (
+    x < left ||
+    y < top ||
+    x > right ||
+    y > bottom ||
+    mag > view.magLimitAdjusted
+  ) {
+    return false;
+  }
+
+  return true;
 }

@@ -8,7 +8,7 @@
     "emulator": "react-native run-android --no-packager",
     "bundle": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res",
     "release": "cd android && ./gradlew assembleRelease",
-    "install-android": "adb install -r ./android/app/build/outputs/apk/app-release-unsigned.apk",
+    "install-android": "adb install -r ./android/app/build/outputs/apk/app-release.apk",
     "test": "jest"
   },
   "dependencies": {

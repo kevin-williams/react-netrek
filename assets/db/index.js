@@ -23,32 +23,32 @@ import STARS21 from './stars21.json';
 import STARS22 from './stars22.json';
 import STARS23 from './stars23.json';
 
-export const STARS = {
-  STARS0: STARS0.stars,
-  STARS1: STARS1.stars,
-  STARS2: STARS2.stars,
-  STARS3: STARS3.stars,
-  STARS4: STARS4.stars,
-  STARS5: STARS5.stars,
-  STARS6: STARS6.stars,
-  STARS7: STARS7.stars,
-  STARS8: STARS8.stars,
-  STARS9: STARS9.stars,
-  STARS10: STARS10.stars,
-  STARS11: STARS11.stars,
-  STARS12: STARS12.stars,
-  STARS13: STARS13.stars,
-  STARS14: STARS14.stars,
-  STARS15: STARS15.stars,
-  STARS16: STARS16.stars,
-  STARS17: STARS17.stars,
-  STARS18: STARS18.stars,
-  STARS19: STARS19.stars,
-  STARS20: STARS20.stars,
-  STARS21: STARS21.stars,
-  STARS22: STARS22.stars,
-  STARS23: STARS23.stars
-};
+export const STARS = [
+  STARS0.stars,
+  STARS1.stars,
+  STARS2.stars,
+  STARS3.stars,
+  STARS4.stars,
+  STARS5.stars,
+  STARS6.stars,
+  STARS7.stars,
+  STARS8.stars,
+  STARS9.stars,
+  STARS10.stars,
+  STARS11.stars,
+  STARS12.stars,
+  STARS13.stars,
+  STARS14.stars,
+  STARS15.stars,
+  STARS16.stars,
+  STARS17.stars,
+  STARS18.stars,
+  STARS19.stars,
+  STARS20.stars,
+  STARS21.stars,
+  STARS22.stars,
+  STARS23.stars
+];
 
 import { DSOS } from './messier.json';
 

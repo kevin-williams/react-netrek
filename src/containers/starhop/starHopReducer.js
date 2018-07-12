@@ -23,7 +23,7 @@ const TARGET_FOUND_RA_OFFSET = 0.03;
 const TARGET_FOUND_DEC_OFFSET = 0.2;
 
 export const defaultState = {
-  stars: STARS.STARS0,
+  stars: STARS[0],
   dsos: DSOS,
   view: DEFAULT_FINDER_VIEW,
   eyepieceView: DEFAULT_EYEPIECE_VIEW,
@@ -91,8 +91,12 @@ export default function userReducer(state = defaultState, action) {
         state.eyepieceView,
         state.selectedHop.targetLocation
       );
+
+      const stars = getStarsForLocation(action.location, state);
+
       return {
         ...state,
+        stars,
         location: action.location,
         targetFound
       };
@@ -140,4 +144,18 @@ function viewContainsTarget(location, view, target) {
   //   target=${JSON.stringify(target)}
   // `);
   return isInView(target.ra, target.dec, 1, view, location);
+}
+
+function getStarsForLocation(newLocation, state) {
+  const raInt = Math.floor(newLocation.ra);
+  const raCurrent = Math.floor(state.location.ra);
+
+  if (raInt === raCurrent) {
+    return state.stars;
+  }
+
+  const raBefore = raInt === 0 ? 23 : raInt - 1;
+  const raAfter = raInt === 23 ? 0 : raInt + 1;
+
+  return [...STARS[raBefore], ...STARS[raInt], ...STARS[raAfter]];
 }

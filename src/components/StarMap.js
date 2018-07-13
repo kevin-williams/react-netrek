@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
 import { PanResponder } from 'react-native';
 import PropTypes from 'prop-types';
-import { ClipPath, Defs, G, Rect, Stop } from 'react-native-svg';
+import {
+  ClipPath,
+  Defs,
+  RadialGradient,
+  G,
+  Rect,
+  Stop
+} from 'react-native-svg';
 import { Dso, Star, StarGradient } from './svg';
 import { RA_TO_DEG } from '../utils';
 
@@ -12,7 +19,7 @@ export class StarMap extends Component {
     location: PropTypes.object.isRequired,
     view: PropTypes.object.isRequired,
     starMagLimit: PropTypes.number,
-    dsoMagLimit: PropTypes.number,
+    dsoMagLimit: PropTypes.number
   };
 
   drawDSOs(view, location) {
@@ -31,11 +38,11 @@ export class StarMap extends Component {
   drawStars(view, location) {
     // console.log('drawStars', view);
 
-    return this.props.stars.map(star => {
+    return this.props.stars.map((star, index) => {
       let { ra, dec } = star;
       return (
         <Star
-          key={`${ra}|${dec}`}
+          key={`${ra}|${dec}|${index}`}
           star={star}
           view={view}
           location={location}
@@ -57,12 +64,8 @@ export class StarMap extends Component {
   render() {
     const view = this.getView();
     const location = this.props.location;
-    // const panHanlders = this.props.updateLocation
-    //   ? this.panResponder.panHandlers
-    //   : null;
 
     return (
-      // <G {...panHanlders}>
       <G>
         <StarGradient />
         <Rect width={this.props.size} height={this.props.size} fill="#000" />

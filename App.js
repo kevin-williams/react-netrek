@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import { NativeRouter, Route, Switch } from 'react-router-native';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import { applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
+import Reactotron from 'reactotron-react-native';
 
 import reducers from './src/reducers';
 
@@ -12,6 +13,8 @@ import SetupMain from './src/containers/setup/SetupMain';
 import StarHopMain from './src/containers/starhop/StarHopMain';
 import StarChart from './src/containers/starchart/StarChart';
 
+import './src/utils/reactotron';
+
 export default class App extends Component {
   componentWillMount() {
     console.log('Mounting app');
@@ -19,7 +22,13 @@ export default class App extends Component {
 
   render() {
     return (
-      <Provider store={createStore(reducers, {}, applyMiddleware(ReduxThunk))}>
+      <Provider
+        store={Reactotron.createStore(
+          reducers,
+          {},
+          applyMiddleware(ReduxThunk)
+        )}
+      >
         <NativeRouter>
           <Switch>
             <Route path="/setup" component={SetupMain} />

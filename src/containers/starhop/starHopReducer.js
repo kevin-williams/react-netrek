@@ -25,7 +25,7 @@ const TARGET_FOUND_DEC_OFFSET = 0.2;
 export const defaultState = {
   stars: STARS[0],
   dsos: DSOS,
-  view: DEFAULT_FINDER_VIEW,
+  view: DEFAULT_EYEPIECE_VIEW,
   eyepieceView: DEFAULT_EYEPIECE_VIEW,
   skyDarkness: 0,
   location: {
@@ -63,12 +63,10 @@ export const defaultState = {
 export default function userReducer(state = defaultState, action) {
   console.log('starhopReducer action=', action);
   switch (action.type) {
-    case c.GET_STARS_SUCCESS:
-    case c.GET_STARS_FAILURE:
+    case c.UPDATE_STARS:
       return {
         ...state,
-        stars: action.stars,
-        starStatus: action.starStatus
+        stars: action.stars
       };
 
     case c.GET_DEEP_SPACE_SUCCESS:
@@ -92,11 +90,8 @@ export default function userReducer(state = defaultState, action) {
         state.selectedHop.targetLocation
       );
 
-      const stars = getStarsForLocation(action.location, state);
-
       return {
         ...state,
-        stars,
         location: action.location,
         targetFound
       };
@@ -144,18 +139,4 @@ function viewContainsTarget(location, view, target) {
   //   target=${JSON.stringify(target)}
   // `);
   return isInView(target.ra, target.dec, 1, view, location);
-}
-
-function getStarsForLocation(newLocation, state) {
-  const raInt = Math.floor(newLocation.ra);
-  const raCurrent = Math.floor(state.location.ra);
-
-  if (raInt === raCurrent) {
-    return state.stars;
-  }
-
-  const raBefore = raInt === 0 ? 23 : raInt - 1;
-  const raAfter = raInt === 23 ? 0 : raInt + 1;
-
-  return [...STARS[raBefore], ...STARS[raInt], ...STARS[raAfter]];
 }

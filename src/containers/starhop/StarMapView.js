@@ -28,7 +28,7 @@ class StarMapView extends Component {
         this.position.setValue(this.calculatePosition(gesture));
       },
       onPanResponderRelease: (event, gesture) => {
-        this.updateLocation(gesture);
+        this.gestureLocationChange(gesture);
       }
     });
   }
@@ -54,9 +54,9 @@ class StarMapView extends Component {
     return { ra, dec };
   };
 
-  updateLocation = gesture => {
+  gestureLocationChange = gesture => {
     let newLocation = this.calculateLocation(gesture);
-    console.log('updateLocation=', newLocation);
+    console.log('gestureLocationChange=', newLocation);
     this.props.updateLocation(newLocation);
     this.position.setValue({ x: 0, y: 0 });
   };

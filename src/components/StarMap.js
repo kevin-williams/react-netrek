@@ -1,16 +1,7 @@
 import React, { Component } from 'react';
-import { PanResponder } from 'react-native';
 import PropTypes from 'prop-types';
-import {
-  ClipPath,
-  Defs,
-  RadialGradient,
-  G,
-  Rect,
-  Stop
-} from 'react-native-svg';
+import { G, Rect } from 'react-native-svg';
 import { Dso, Star, StarGradient } from './svg';
-import { RA_TO_DEG } from '../utils';
 
 export class StarMap extends Component {
   static propTypes = {

@@ -147,15 +147,6 @@
     </item>
     <item
         is-multidex="false"
-        jar="/home/kwilliams/repositories/starhop-mobile/android/app/build/intermediates/exploded-aar/starhop_mobile/react-native-svg/unspecified/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="8d148f54f3da14fd41cf719426259b28153640e7">
-        <dex dex="/home/kwilliams/repositories/starhop-mobile/android/app/build/intermediates/pre-dexed/release/starhop_mobile-react-native-svg-unspecified_f1860a7496b287b6650326545f508f7d84377aca.jar" />
-    </item>
-    <item
-        is-multidex="false"
         jar="/home/kwilliams/repositories/starhop-mobile/android/app/build/intermediates/exploded-aar/com.facebook.fbui.textlayoutbuilder/textlayoutbuilder/1.0.0/jars/classes.jar"
         jumboMode="false"
         optimize="true"
@@ -180,6 +171,15 @@
         revision="23.0.1"
         sha1="a9283170b7305c8d92d25aff02a6ab7e45d06cbe">
         <dex dex="/home/kwilliams/repositories/starhop-mobile/android/app/build/intermediates/pre-dexed/release/okio-1.13.0_5b4e8a3593616d13eaf400fb1e8347ac2b6ab670.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/kwilliams/repositories/starhop-mobile/android/app/build/intermediates/exploded-aar/StarHop/react-native-svg/unspecified/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="8d148f54f3da14fd41cf719426259b28153640e7">
+        <dex dex="/home/kwilliams/repositories/starhop-mobile/android/app/build/intermediates/pre-dexed/debug/StarHop-react-native-svg-unspecified_761d0dc48a65f0f1c7e1d721f3b40605327bb4ec.jar" />
     </item>
     <item
         is-multidex="false"

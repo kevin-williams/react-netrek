@@ -12,7 +12,6 @@ import { getXYCoords, isOnMap } from '../../utils';
 
 const Star = props => {
   const { star, view, location } = props;
-  const fillStr = radius > 2 ? 'url(#star)' : 'white';
 
   let { ra, dec, mag } = star;
   let { x, y } = getXYCoords(ra, dec, view, location);
@@ -21,12 +20,14 @@ const Star = props => {
     return null;
   }
 
-  let radius = Math.floor(10 - mag);
+  let radius = Math.floor(13 - mag);
+  const fillStr = radius > 2 ? 'url(#star)' : 'white';
+
   if (radius < 1) {
     radius = 1;
   }
 
-  //   console.log('drawing star at ', x, y, radius);
+  // console.tron.log('drawing star at ', x, y, radius);
 
   return <Circle r={radius} fill={fillStr} cx={x} cy={y} radius={radius} />;
 };

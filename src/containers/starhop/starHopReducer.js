@@ -61,7 +61,7 @@ export const defaultState = {
 };
 
 export default function userReducer(state = defaultState, action) {
-  console.log('starhopReducer action=', action);
+  // console.log('starhopReducer action=', action);
   switch (action.type) {
     case c.UPDATE_STARS:
       return {

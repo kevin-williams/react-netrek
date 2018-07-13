@@ -5,13 +5,13 @@ export function loadStars(starQuery) {
   const { raFrom, decFrom, raTo, decTo, magLimit } = starQuery;
 
   return new Promise(function(resolve, reject) {
-    console.log('Loading star db from url');
+    // console.log('Loading star db from url');
 
     try {
       axios
         .get('db/hygfull.json')
         .then(response => {
-          console.log('got response', response);
+          // console.log('got response', response);
           const stars = response.data.stars.filter(starEntry => {
             // console.log('starEntry=', starEntry);
             if (
@@ -40,7 +40,7 @@ export function loadStars(starQuery) {
 
 export function loadDSOs() {
   return new Promise(function(resolve, reject) {
-    console.log('Loading dso db from url');
+    // console.log('Loading dso db from url');
 
     try {
       axios

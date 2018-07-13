@@ -71,7 +71,6 @@ function updateStarsForLocation(newLocation, currentLocation, dispatch) {
 
   promise
     .then(stars => {
-      console.log('updating stars');
       dispatch({
         type: c.UPDATE_STARS,
         stars

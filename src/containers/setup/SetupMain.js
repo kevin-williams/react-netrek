@@ -6,7 +6,7 @@ import StarSelection from './StarSelection';
 
 export default class SetupMain extends Component {
   render() {
-    console.log('SetupMain');
+    // console.log('SetupMain');
     return (
       <View>
         <BackButton />

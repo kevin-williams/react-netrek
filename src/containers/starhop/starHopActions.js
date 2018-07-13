@@ -11,13 +11,13 @@ export const updateHints = hints => ({
   hints
 });
 
-export const updateLocation = location => dispatch => {
+export const updateLocation = (location, currentLocation) => dispatch => {
   dispatch({
     type: c.UPDATE_LOCATION,
     location
   });
 
-  updateStarsForLocation(location, dispatch);
+  updateStarsForLocation(location, currentLocation, dispatch);
 };
 
 export const updateView = view => ({
@@ -40,7 +40,25 @@ export const updateSkyDarkness = skyDarkness => ({
   skyDarkness
 });
 
-function updateStarsForLocation(newLocation, dispatch) {
+function updateStarsForLocation(newLocation, currentLocation, dispatch) {
+  const { ra } = newLocation;
+  const { ra: curRa } = currentLocation;
+
+  const decPartRa = ra - Math.trunc(ra);
+  const decPartCurRa = curRa - Math.trunc(curRa);
+
+  if (decPartRa < 0.2 && decPartCurRa < 0.2) {
+    return;
+  }
+
+  if (decPartRa > 0.8 && decPartCurRa > 0.8) {
+    return;
+  }
+
+  if (decPartRa >= 0.2 && decPartRa <= 0.8) {
+    return;
+  }
+
   const raInt = Math.round(newLocation.ra);
 
   const promise = new Promise(function(resolve, reject) {

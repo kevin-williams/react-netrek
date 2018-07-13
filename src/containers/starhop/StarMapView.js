@@ -57,7 +57,7 @@ class StarMapView extends Component {
   gestureLocationChange = gesture => {
     let newLocation = this.calculateLocation(gesture);
     console.log('gestureLocationChange=', newLocation);
-    this.props.updateLocation(newLocation);
+    this.props.updateLocation(newLocation, this.props.starhop.location);
     this.position.setValue({ x: 0, y: 0 });
   };
 

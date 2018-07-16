@@ -38,6 +38,7 @@ const Dso = props => {
       width={dsoWidth}
       height={dsoHeight}
       href={IMAGES[dsoName].img}
+      opacity="0.6"
     />
   );
 };

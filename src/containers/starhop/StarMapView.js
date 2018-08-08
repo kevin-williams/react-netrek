@@ -63,26 +63,25 @@ class StarMapView extends Component {
 
   render() {
     // console.log('this.position', JSON.stringify(this.position));
+    const { size } = this.props;
+    const drawSize = size * 3;
     return (
       <Animated.View
         {...this.panResponder.panHandlers}
         style={{
-          width: this.props.size * 3,
-          height: this.props.size * 3,
-          transform: [
-            { translateX: this.position.x },
-            { translateY: this.position.y }
-          ]
+          width: drawSize,
+          height: drawSize,
+          transform: this.position.getTranslateTransform()
         }}
       >
-        <Svg width={this.props.size * 3} height={this.props.size * 3}>
+        <Svg width={drawSize} height={drawSize}>
           <StarMap
             stars={this.props.starhop.stars}
             dsos={this.props.starhop.dsos}
             view={this.props.view}
             location={this.props.starhop.location}
             skyDarkness={this.props.starhop.skyDarkness}
-            size={this.props.size}
+            size={size}
           />
         </Svg>
       </Animated.View>

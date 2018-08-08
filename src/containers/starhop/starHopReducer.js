@@ -29,8 +29,8 @@ export const defaultState = {
   eyepieceView: DEFAULT_EYEPIECE_VIEW,
   skyDarkness: 0,
   location: {
-    ra: 0.85,
-    dec: 41.25
+    ra: 0.712306,
+    dec: 41.2683
   },
   selectedHop: {
     id: '',

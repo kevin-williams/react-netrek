@@ -24,51 +24,45 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import {NativeRouter, Route, Link} from 'react-router-native';
+
+const WelcomePage = () => (
+  <SafeAreaView>
+    <Text>Welcome</Text>
+  </SafeAreaView>
+);
+const HopSelectionPage = () => (
+  <SafeAreaView>
+    <Text>HopSelection</Text>
+  </SafeAreaView>
+);
+const StarMapPage = () => (
+  <SafeAreaView>
+    <Text>StarMap</Text>
+  </SafeAreaView>
+);
+
 const App: () => React$Node = () => {
   return (
-    <>
+    <NativeRouter>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
-        </ScrollView>
+        <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+          <Link to="/" underlayColor="#f0f4f7">
+            <Text>WelcomePage</Text>
+          </Link>
+          <Link to="/hopSelection" underlayColor="#f0f4f7">
+            <Text>HopSelectionPage</Text>
+          </Link>
+          <Link to="/starMap" underlayColor="#f0f4f7">
+            <Text>StarMapPage</Text>
+          </Link>
+        </View>
+        <Route exact path="/" component={WelcomePage} />
+        <Route path="/hopSelection" component={HopSelectionPage} />
+        <Route path="/starMap" component={StarMapPage} />
       </SafeAreaView>
-    </>
+    </NativeRouter>
   );
 };
 

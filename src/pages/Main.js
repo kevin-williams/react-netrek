@@ -4,7 +4,7 @@ import {Link, Route} from 'react-router-native';
 
 import Welcome from './Welcome';
 import HopSelection from './HopSelection';
-import StarMap from './StarMap';
+import StarHop from './StarHop';
 
 const Main = () => (
   <>
@@ -28,7 +28,7 @@ const Main = () => (
       </View>
       <Route exact path="/" component={Welcome} />
       <Route path="/hopSelection" component={HopSelection} />
-      <Route path="/starMap" component={StarMap} />
+      <Route path="/starMap" component={StarHop} />
     </SafeAreaView>
   </>
 );

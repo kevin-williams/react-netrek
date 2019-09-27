@@ -16,12 +16,12 @@ const client = new ApolloClient({
   resolvers: {
     Query: {
       stars: (_, {minRa, maxRa, minDec, maxDec}) => {
-        console.log('lookup stars', minRa, maxRa, minDec, maxDec);
+        // console.log('lookup stars', minRa, maxRa, minDec, maxDec);
         const stars = [];
         for (let index = 0; index < 24; index++) {
-          console.log('checking index', index, Math.ceil(maxRa));
+          // console.log('checking index', index, Math.ceil(maxRa));
           if (Math.floor(minRa) <= index && index <= Math.ceil(maxRa)) {
-            console.log('adding stars for index', index);
+            // console.log('adding stars for index', index);
             stars.push(...filter(STARS[index], minRa, maxRa, minDec, maxDec));
           }
         }
@@ -38,6 +38,8 @@ const client = new ApolloClient({
 client.writeData({
   data: {
     selectedHop: 'M13',
+    location: {ra: 0.5, dec: 15, __typename: 'location'},
+    view: {fov: 2, magLimit: 12, __typename: 'view'},
   },
 });
 

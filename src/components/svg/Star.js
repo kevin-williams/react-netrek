@@ -19,7 +19,7 @@ const Star = props => {
   if (!isOnMap(x, y, mag, view)) {
     return null;
   }
-  console.log('trying to draw star', x, y, mag, view);
+  // console.log('trying to draw star', x, y, mag, view);
 
   let radius = Math.floor(13 - mag);
   const fillStr = radius > 2 ? 'url(#star)' : 'white';
@@ -28,7 +28,7 @@ const Star = props => {
     radius = 1;
   }
 
-  console.log('drawing star at ', x, y, radius);
+  // console.log('drawing star at ', x, y, radius);
 
   return <Circle r={radius} fill={fillStr} cx={x} cy={y} radius={radius} />;
 };

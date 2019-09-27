@@ -1,10 +1,11 @@
-import React from 'react';
-import {View, Text} from 'react-native';
+import React, {useState} from 'react';
+import {PanResponder, View, Text} from 'react-native';
 import {useQuery} from '@apollo/react-hooks';
 import {gql} from 'apollo-boost';
-import {Svg} from 'react-native-svg';
 
-import StarMap from '../components/StarMap';
+import TouchStarMap from '../components/TouchStarMap';
+
+const size = 400;
 
 const STARMAP_QUERY = gql`
   query($minRa: Float, $maxRa: Float, $minDec: Float, $maxDec: Float) {
@@ -25,6 +26,14 @@ const STARMAP_QUERY = gql`
       id1
       mag
     }
+    location @client {
+      ra
+      dec
+    }
+    view @client {
+      fov
+      magLimit
+    }
   }
 `;
 
@@ -37,24 +46,27 @@ const StarHop = () => {
       maxDec: 17,
     },
   });
-  console.log('data', data, loading);
-  console.log('error', error);
+  // console.log('data', data, loading);
+  // console.log('error', error);
 
   return (
-    <View style={{backgroundColor: 'green'}}>
+    <View
+      style={{
+        backgroundColor: 'green',
+        justifyContent: 'center',
+        alignContent: 'center',
+      }}>
       <Text style={{backgroundColor: 'green'}}>StarHop</Text>
       {loading && <Text>Loading</Text>}
       {!loading && (
-        <Svg height="300" width="300">
-          <StarMap
-            stars={data.stars}
-            dsos={data.dsos}
-            location={{ra: 0.5, dec: 15}}
-            view={{fov: 7, magLimit: 7}}
-            size={300}
-            skyDarkness={100}
-          />
-        </Svg>
+        <TouchStarMap
+          stars={data.stars}
+          dsos={data.dsos}
+          location={data.location}
+          view={data.view}
+          size={size}
+          skyDarkness={100}
+        />
       )}
     </View>
   );

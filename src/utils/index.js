@@ -11,7 +11,7 @@ export const RA_TO_DEG = 24 / 360;
 export const HALF_IMG_WIDTH = 55;
 
 export function getXYCoords(ra, dec, view, location) {
-  console.log('getXY', ra, dec, view, location);
+  // console.log('getXY', ra, dec, view, location);
 
   // Center of Canvas
   let centerX = view.width / 2;
@@ -23,28 +23,28 @@ export function getXYCoords(ra, dec, view, location) {
   let offsetX = (((location.ra - ra) / widthRA) * view.width) / 2;
   let offsetY = (((location.dec - dec) / widthDec) * view.height) / 2;
 
-  if (
-    offsetX > 0 &&
-    offsetY > 0 &&
-    offsetX < view.width &&
-    offsetY < view.height
-  ) {
-    console.log(
-      'getXY calcs',
-      centerX + offsetX,
-      centerY + offsetY,
-      widthRA,
-      widthDec,
-      offsetX,
-      offsetY,
-    );
-  }
+  // if (
+  //   offsetX > 0 &&
+  //   offsetY > 0 &&
+  //   offsetX < view.width &&
+  //   offsetY < view.height
+  // ) {
+  //   console.log(
+  //     'getXY calcs',
+  //     centerX + offsetX,
+  //     centerY + offsetY,
+  //     widthRA,
+  //     widthDec,
+  //     offsetX,
+  //     offsetY,
+  //   );
+  // }
 
   return {x: centerX + offsetX, y: centerY + offsetY, offsetX, offsetY};
 }
 
 export function isInView(x, y, mag, view) {
-  console.log('isInView', x, y, mag, view);
+  // console.log('isInView', x, y, mag, view);
   if (
     x < 0 ||
     y < 0 ||
@@ -59,7 +59,7 @@ export function isInView(x, y, mag, view) {
 }
 
 export function isOnMap(x, y, mag, view) {
-  console.log('isOnMap', x, y, mag, view);
+  // console.log('isOnMap', x, y, mag, view);
   const {width, height} = view;
 
   const left = -3 * width;

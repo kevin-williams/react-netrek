@@ -7,28 +7,28 @@ export const HOPS = [
     hint:
       'You can see M13 in the finder view.   But check the patterns of stars with your chart to learn to align them with what you see.\n\nMatch the triangle SE of the starting point and the 2 stars straddling M13.',
     starMapQuery: {
-      raFrom: 15.75,
-      raTo: 18.25,
+      raFrom: 15,
+      raTo: 19,
       decFrom: 24,
       decTo: 48,
-      magLimit: 15
+      magLimit: 15,
     },
     startingLocation: [
       {
         name: 'Eta Herculis',
         ra: 16.715,
-        dec: 38.92
+        dec: 38.92,
       },
       {
         name: 'Zeta Herculis',
         ra: 16.688,
-        dec: 31.606
-      }
+        dec: 31.606,
+      },
     ],
     targetLocation: {
       ra: 16.7,
-      dec: 36.42
-    }
+      dec: 36.42,
+    },
   },
   {
     id: 'M16',
@@ -42,29 +42,29 @@ export const HOPS = [
       raTo: 19.5,
       decFrom: -35,
       decTo: 0,
-      magLimit: 15
+      magLimit: 15,
     },
     startingLocation: [
       {
         name: 'Kaus Borealis',
         ra: 18.466,
-        dec: -25.432
+        dec: -25.432,
       },
       {
         name: 'Phi Sagittarii',
         ra: 18.759,
-        dec: -26.969
+        dec: -26.969,
       },
       {
         name: 'Nunki',
         ra: 18.922,
-        dec: -26.299
-      }
+        dec: -26.299,
+      },
     ],
     targetLocation: {
       ra: 18.33,
-      dec: -13.773
-    }
+      dec: -13.773,
+    },
   },
   {
     id: 'M22',
@@ -78,29 +78,29 @@ export const HOPS = [
       raTo: 19.5,
       decFrom: -35,
       decTo: 0,
-      magLimit: 15
+      magLimit: 15,
     },
     startingLocation: [
       {
         name: 'Kaus Borealis',
         ra: 18.466,
-        dec: -25.432
+        dec: -25.432,
       },
       {
         name: 'Phi Sagittarii',
         ra: 18.759,
-        dec: -26.969
+        dec: -26.969,
       },
       {
         name: 'Nunki',
         ra: 18.922,
-        dec: -26.299
-      }
+        dec: -26.299,
+      },
     ],
     targetLocation: {
       ra: 18.625,
-      dec: -23.887
-    }
+      dec: -23.887,
+    },
   },
   {
     id: 'M25',
@@ -114,29 +114,29 @@ export const HOPS = [
       raTo: 19.5,
       decFrom: -35,
       decTo: 0,
-      magLimit: 15
+      magLimit: 15,
     },
     startingLocation: [
       {
         name: 'Kaus Borealis',
         ra: 18.466,
-        dec: -25.432
+        dec: -25.432,
       },
       {
         name: 'Phi Sagittarii',
         ra: 18.759,
-        dec: -26.969
+        dec: -26.969,
       },
       {
         name: 'Nunki',
         ra: 18.922,
-        dec: -26.299
-      }
+        dec: -26.299,
+      },
     ],
     targetLocation: {
       ra: 18.547,
-      dec: -19.1
-    }
+      dec: -19.1,
+    },
   },
   {
     id: 'M27',
@@ -150,24 +150,24 @@ export const HOPS = [
       raTo: 20.5,
       decFrom: 0,
       decTo: 30,
-      magLimit: 15
+      magLimit: 15,
     },
     startingLocation: [
       {
         name: 'Altair',
         ra: 19.846,
-        dec: 8.875
+        dec: 8.875,
       },
       {
         name: 'Zeta Aquilae',
         ra: 19.091,
-        dec: 13.873
-      }
+        dec: 13.873,
+      },
     ],
     targetLocation: {
       ra: 20.0,
-      dec: 22.76
-    }
+      dec: 22.76,
+    },
   },
   {
     id: 'M55',
@@ -181,29 +181,29 @@ export const HOPS = [
       raTo: 21.5,
       decFrom: -35,
       decTo: -20,
-      magLimit: 15
+      magLimit: 15,
     },
     startingLocation: [
       {
         name: 'Ascella',
         ra: 19.043,
-        dec: -29.875
+        dec: -29.875,
       },
       {
         name: 'Phi Sagittarii',
         ra: 18.759,
-        dec: -26.969
+        dec: -26.969,
       },
       {
         name: 'Nunki',
         ra: 18.922,
-        dec: -26.299
-      }
+        dec: -26.299,
+      },
     ],
     targetLocation: {
       ra: 19.685,
-      dec: -30.921
-    }
+      dec: -30.921,
+    },
   },
   {
     id: 'M56',
@@ -217,19 +217,19 @@ export const HOPS = [
       raTo: 20,
       decFrom: 26,
       decTo: 43,
-      magLimit: 15
+      magLimit: 15,
     },
     startingLocation: [
       {
         name: 'Vega',
         ra: 18.616,
-        dec: 38.79
-      }
+        dec: 38.79,
+      },
     ],
     targetLocation: {
       ra: 19.29,
-      dec: 30.21
-    }
+      dec: 30.21,
+    },
   },
   {
     id: 'M57',
@@ -243,19 +243,19 @@ export const HOPS = [
       raTo: 20,
       decFrom: 30,
       decTo: 45,
-      magLimit: 15
+      magLimit: 15,
     },
     startingLocation: [
       {
         name: 'Vega',
         ra: 18.616,
-        dec: 38.79
-      }
+        dec: 38.79,
+      },
     ],
     targetLocation: {
       ra: 18.88,
-      dec: 33.03
-    }
+      dec: 33.03,
+    },
   },
   {
     id: 'M76',
@@ -269,29 +269,29 @@ export const HOPS = [
       raTo: 6,
       decFrom: 45,
       decTo: 70,
-      magLimit: 15
+      magLimit: 15,
     },
     startingLocation: [
       {
         name: 'Shedar',
         ra: 0.675,
-        dec: 56.54
+        dec: 56.54,
       },
       {
         name: 'Navi',
         ra: 0.946,
-        dec: 60.715
+        dec: 60.715,
       },
       {
         name: 'Ruchbah',
         ra: 1.431,
-        dec: 60.241
-      }
+        dec: 60.241,
+      },
     ],
     targetLocation: {
       ra: 1.73,
-      dec: 51.657
-    }
+      dec: 51.657,
+    },
   },
   {
     id: 'M81',
@@ -305,23 +305,23 @@ export const HOPS = [
       raTo: 12,
       decFrom: 50,
       decTo: 70,
-      magLimit: 15
+      magLimit: 15,
     },
     startingLocation: [
       {
         name: 'Dubhe',
         ra: 11.062,
-        dec: 61.755
+        dec: 61.755,
       },
       {
         name: 'h Ursae Majoris',
         ra: 9.526,
-        dec: 63.066
-      }
+        dec: 63.066,
+      },
     ],
     targetLocation: {
       ra: 9.92,
-      dec: 69.06
-    }
-  }
+      dec: 69.06,
+    },
+  },
 ];

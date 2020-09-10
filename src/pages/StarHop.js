@@ -53,7 +53,7 @@ function StarHop() {
       maxDec: 17,
     },
   });
-  console.log('data', data && data.location);
+  // console.log('data', data && data.location);
   // console.log('error', error);
 
   return (
@@ -65,7 +65,7 @@ function StarHop() {
           stars={data.stars}
           dsos={data.dsos}
           location={data.location}
-          view={data.view}
+          view={{...data.view, width, height: width}}
           size={width}
           skyDarkness={100}
         />

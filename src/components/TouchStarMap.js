@@ -14,6 +14,7 @@ const calculateLocation = (dx, dy, client, location, view) => {
   let dec = location.dec + (2 * dy * widthDec) / view.height;
 
   const newLocation = {ra, dec, __typename: 'location'};
+  // console.log('writing newLocation', newLocation, location, view);
   client.writeData({
     data: {
       location: newLocation,
@@ -22,15 +23,13 @@ const calculateLocation = (dx, dy, client, location, view) => {
 };
 
 function TouchStarMap({stars, dsos, location, view, size, skyDarkness}) {
-  console.log('TouchStarMap location=', location);
+  // console.log('TouchStarMap location=', location);
   const client = useApolloClient();
   // Used to create the new panresponder when a gesture finishes so the location is updated.
   const [newPan, setNewPan] = useState(0);
 
   // PanResponder will be updated after every pan finishes to get the new location
   const panResponder = useMemo(() => {
-    console.log('new panresponder');
-
     return PanResponder.create({
       onStartShouldSetPanResponder: () => true,
       onPanResponderMove: (_event, gesture) => {

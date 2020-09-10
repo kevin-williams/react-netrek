@@ -23,23 +23,6 @@ export function getXYCoords(ra, dec, view, location) {
   let offsetX = (((location.ra - ra) / widthRA) * view.width) / 2;
   let offsetY = (((location.dec - dec) / widthDec) * view.height) / 2;
 
-  // if (
-  //   offsetX > 0 &&
-  //   offsetY > 0 &&
-  //   offsetX < view.width &&
-  //   offsetY < view.height
-  // ) {
-  //   console.log(
-  //     'getXY calcs',
-  //     centerX + offsetX,
-  //     centerY + offsetY,
-  //     widthRA,
-  //     widthDec,
-  //     offsetX,
-  //     offsetY,
-  //   );
-  // }
-
   return {x: centerX + offsetX, y: centerY + offsetY, offsetX, offsetY};
 }
 

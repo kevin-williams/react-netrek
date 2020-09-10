@@ -21,7 +21,7 @@ const Star = props => {
   }
   // console.log('trying to draw star', x, y, mag, view);
 
-  let radius = Math.floor(9 - mag);
+  let radius = Math.floor(8 - mag);
   const fillStr = radius > 2 ? 'url(#star)' : 'white';
 
   if (radius < 1) {

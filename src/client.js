@@ -38,8 +38,8 @@ const client = new ApolloClient({
 client.writeData({
   data: {
     selectedHop: 'M13',
-    location: {ra: 0.5, dec: 15, __typename: 'location'},
-    view: {fov: 2, magLimit: 12, __typename: 'view'},
+    location: {ra: 16.712, dec: 38.96, __typename: 'location'},
+    view: {fov: 1.5, magLimit: 12, __typename: 'view'},
   },
 });
 

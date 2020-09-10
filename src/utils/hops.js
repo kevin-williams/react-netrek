@@ -7,8 +7,8 @@ export const HOPS = [
     hint:
       'You can see M13 in the finder view.   But check the patterns of stars with your chart to learn to align them with what you see.\n\nMatch the triangle SE of the starting point and the 2 stars straddling M13.',
     starMapQuery: {
-      raFrom: 15,
-      raTo: 19,
+      raFrom: 15.75,
+      raTo: 18.25,
       decFrom: 24,
       decTo: 48,
       magLimit: 15,

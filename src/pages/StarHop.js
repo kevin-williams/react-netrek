@@ -47,10 +47,10 @@ const Title = styled.Text`
 function StarHop() {
   const {data, loading} = useQuery(STARMAP_QUERY, {
     variables: {
-      minRa: 0.0,
-      maxRa: 0.9,
-      minDec: 13,
-      maxDec: 17,
+      minRa: 15.75,
+      maxRa: 18.25,
+      minDec: 24,
+      maxDec: 48,
     },
   });
   // console.log('data', data && data.location);

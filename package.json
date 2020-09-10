@@ -6,6 +6,7 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
+    "pod": "cd ios && pod install",
     "test": "jest",
     "lint": "eslint ."
   },
@@ -16,7 +17,8 @@
     "react": "16.9.0",
     "react-native": "0.61.1",
     "react-native-svg": "^9.9.5",
-    "react-router-native": "^5.1.0"
+    "react-router-native": "^5.1.0",
+    "styled-components": "^5.2.0"
   },
   "devDependencies": {
     "@babel/core": "7.6.2",

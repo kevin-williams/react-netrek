@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useMemo, useState} from 'react';
 import {PanResponder, View} from 'react-native';
 import {Svg} from 'react-native-svg';
 import {useApolloClient} from '@apollo/react-hooks';
@@ -6,35 +6,39 @@ import StarMap from '../components/StarMap';
 
 import {RA_TO_DEG} from '../utils';
 
-const TouchStarMap = ({stars, dsos, location, view, size, skyDarkness}) => {
-  const [panResponder] = useState(
-    PanResponder.create({
-      onStartShouldSetPanResponder: () => true,
-      onPanResponderMove: (event, gesture) => {
-        calculateLocation(gesture);
-      },
-    }),
-  );
+const calculateLocation = (dx, dy, client, location, view) => {
+  let widthRA = (view.fov * RA_TO_DEG) / 2;
+  let widthDec = view.fov / 2;
 
+  let ra = location.ra + (2 * dx * widthRA) / view.width;
+  let dec = location.dec + (2 * dy * widthDec) / view.height;
+
+  const newLocation = {ra, dec, __typename: 'location'};
+  client.writeData({
+    data: {
+      location: newLocation,
+    },
+  });
+};
+
+function TouchStarMap({stars, dsos, location, view, size, skyDarkness}) {
+  console.log('TouchStarMap location=', location);
   const client = useApolloClient();
+  // Used to create the new panresponder when a gesture finishes so the location is updated.
+  const [newPan, setNewPan] = useState(0);
 
-  const calculateLocation = gesture => {
-    console.log('view', view);
-    let widthRA = (view.fov * RA_TO_DEG) / 2;
-    let widthDec = view.fov / 2;
+  // PanResponder will be updated after every pan finishes to get the new location
+  const panResponder = useMemo(() => {
+    console.log('new panresponder');
 
-    let ra = location.ra + (2 * gesture.dx * widthRA) / view.width;
-    let dec = location.dec + (2 * gesture.dy * widthDec) / view.height;
-
-    console.log('ra, dec', ra, dec);
-
-    const newLocation = {ra, dec, __typename: 'location'};
-    client.writeData({
-      data: {
-        location: newLocation,
+    return PanResponder.create({
+      onStartShouldSetPanResponder: () => true,
+      onPanResponderMove: (_event, gesture) => {
+        calculateLocation(gesture.dx, gesture.dy, client, location, view);
       },
+      onPanResponderEnd: () => setNewPan(newPan + 1),
     });
-  };
+  }, [newPan]);
 
   return (
     <View {...panResponder.panHandlers}>
@@ -45,11 +49,11 @@ const TouchStarMap = ({stars, dsos, location, view, size, skyDarkness}) => {
           location={location}
           view={view}
           size={size}
-          skyDarkness={100}
+          skyDarkness={skyDarkness}
         />
       </Svg>
     </View>
   );
-};
+}
 
 export default TouchStarMap;

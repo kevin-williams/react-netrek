@@ -1,11 +1,13 @@
-import React, {useState} from 'react';
-import {PanResponder, View, Text} from 'react-native';
+import React from 'react';
+import {Dimensions} from 'react-native';
+import {View, Text} from 'react-native';
 import {useQuery} from '@apollo/react-hooks';
 import {gql} from 'apollo-boost';
+import styled from 'styled-components';
 
 import TouchStarMap from '../components/TouchStarMap';
 
-const size = 400;
+const {width, height} = Dimensions.get('window');
 
 const STARMAP_QUERY = gql`
   query($minRa: Float, $maxRa: Float, $minDec: Float, $maxDec: Float) {
@@ -37,8 +39,13 @@ const STARMAP_QUERY = gql`
   }
 `;
 
-const StarHop = () => {
-  const {client, error, data, loading} = useQuery(STARMAP_QUERY, {
+const Title = styled.Text`
+  background-color: ${props => props.theme.lightgrey};
+  padding-left: 10px;
+`;
+
+function StarHop() {
+  const {data, loading} = useQuery(STARMAP_QUERY, {
     variables: {
       minRa: 0.0,
       maxRa: 0.9,
@@ -46,17 +53,12 @@ const StarHop = () => {
       maxDec: 17,
     },
   });
-  // console.log('data', data, loading);
+  console.log('data', data && data.location);
   // console.log('error', error);
 
   return (
-    <View
-      style={{
-        backgroundColor: 'green',
-        justifyContent: 'center',
-        alignContent: 'center',
-      }}>
-      <Text style={{backgroundColor: 'green'}}>StarHop</Text>
+    <View>
+      <Title>StarHop</Title>
       {loading && <Text>Loading</Text>}
       {!loading && (
         <TouchStarMap
@@ -64,12 +66,12 @@ const StarHop = () => {
           dsos={data.dsos}
           location={data.location}
           view={data.view}
-          size={size}
+          size={width}
           skyDarkness={100}
         />
       )}
     </View>
   );
-};
+}
 
 export default StarHop;
